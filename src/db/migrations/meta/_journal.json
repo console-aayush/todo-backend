@@ -8,6 +8,27 @@
       "when": 1762710139342,
       "tag": "0000_nosy_luminals",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1762747141254,
+      "tag": "0001_jazzy_doorman",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762748341779,
+      "tag": "0002_nostalgic_mauler",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1762749691946,
+      "tag": "0003_damp_colonel_america",
+      "breakpoints": true
     }
   ]
 }

@@ -1,38 +1,25 @@
 import { Hono } from "hono";
-import { logger } from "hono/logger";
 import { cors } from "hono/cors";
 import todosRouter from "./routes/todos";
+import authRouter from "./routes/auth";
 
 const app = new Hono();
 
-// ✅ Middlewares
-app.use("*", logger());
+// ✅ Enable CORS with credentials
 app.use(
   "/*",
   cors({
-    origin:
-      "https://todo-app-mlwe2d57yhf942m9j8jqj8e8-5173.thekalkicinematicuniverse.com",
-    allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: "https://todo-app-mlwe2d57yhf942m9j8jqj8e8-5173.thekalkicinematicuniverse.com",
+    credentials: true,
   })
 );
-
-// ✅ Health check route
-app.get("/", (c) =>
-  c.json({
-    status: "ok",
-    message: "Server is running",
-  })
-);
-
-// ✅ Main todos route
-app.route("/todos", todosRouter);
-
-// ✅ Start server
-Bun.serve({
-  fetch: app.fetch,
-  port: 3000,
+app.get("/", (c) => {
+  return c.json({ message: "Hello World" });
 });
 
-console.log("🚀 Server running at http://localhost:3000");
+app.route("/todos", todosRouter); 
+app.route("/auth", authRouter);
 
+Bun.serve({ fetch: app.fetch, port: 3000 });
+console.log("🚀 Server running at http://localhost:3000");
 export default app;
